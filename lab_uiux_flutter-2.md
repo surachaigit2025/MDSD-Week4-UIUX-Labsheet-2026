@@ -229,8 +229,9 @@ Prompt ที่ไม่ดี:
 **ขั้นตอนที่ 1.3: Export เป็น Flutter Code**
 1. คลิก **"Export"** ที่มุมขวาบน (ไอคอน สี่เหลี่ยม มีเครื่องหมาย + ตรงกลาง)
 2. เลือก **"Flutter"**
-3. จะได้ไฟล์ `color_schemes.g.dart` ที่มี `ColorScheme` สำหรับ Light และ Dark
-4. บันทึกไฟล์ไว้ (จะนำไปใช้จริงใน `lib/color_schemes.g.dart` ของการทดลองที่ 3 — ให้ใช้ชื่อไฟล์นี้ตลอดทั้งใบงาน เพื่อไม่ให้สับสน)
+3. จะได้ไฟล์ `lib/theme.dart` ที่มี `ColorScheme` สำหรับ Light และ Dark
+   **การจัดการ Theme สามารถทำได้บน Figma เช่นกัน โดย กดปุ่ม Ctrl + P แล้วค้นหา Plugins ชื่อ Material Theme Builder แล้วทำการกำหนดค่าสีของ Theme ตามต้องการ**
+
 
 **ขั้นตอนที่ 1.4: บันทึกผล**
 
@@ -294,14 +295,14 @@ Prompt ที่ไม่ดี:
 
 **ขั้นตอนที่ 2.5: ออกแบบ Content Area (รายการสินค้าผักผลไม้)**
 1. **สร้าง Card สำหรับ Item สินค้า:**
-   - ไปที่แผง Assets -> ค้นหา **"Card"** แล้วลาก Component `Elevated Card` (หรือ `Filled Card`) ลงบน Frame
+   - ไปที่แผง Assets -> ค้นหา **"Card"** แล้วลาก Component `Horizontal Card` ลงบน Frame
    - ปรับขนาด Card เป็น Width = 328px, Height = 100px
-   - ที่แผง Design ด้านขวา สังเกตส่วน Fill: ให้เลือกใช้ **Color Token** จาก M3 Kit เช่น `Surface Variant` เพื่อรองรับ Light/Dark Mode
-   - จัดตำแหน่ง Card ให้อยู่กลางหน้าจอ: X = 16px, Y = 80px (ต่อจาก App Bar)
+   - ที่แผง Design ด้านขวา สังเกตส่วน Fill: ให้เลือกใช้ Theme ที่ทำการสร้างในไฟล์ (Create in this file)
+      **การจัดการ Theme สามารถทำได้บน Figma เช่นกัน โดย กดปุ่ม Ctrl + P แล้วค้นหา Plugins ชื่อ Material Theme Builder แล้วทำการกำหนดค่าสีของ Theme ตามต้องการ**
+   - จัดตำแหน่ง Card ให้อยู่กลางหน้าจอ (ต่อจาก App Bar)
 2. **เพิ่ม Icon และ Text บน Card สินค้า:**
-   - ลาก Container หรือ Frame ขนาด 48 × 48px ใส่ทางด้านซ้ายของ Card กำหนดสีพื้นหลังเป็น `Primary Container` และใส่ Icon ผลไม้/ผัก (เช่น `shopping_basket` หรือ `eco`) ให้มีสี `On Primary Container`
-   - กด `T` (Text Tool) เพื่อสร้างข้อความชื่อสินค้า เช่น **"ผักสลัดออร์แกนิก"** -> ในแผง Design ฝั่งขวา ส่วน Text Style ให้เลือก **"Title Medium"** จาก M3 Kit
-   - สร้างข้อความรายละเอียดราคา/คำอธิบาย เช่น **"สดใหม่จากฟาร์ม • ฿45 / กิโลกรัม"** -> เลือก Text Style **"Body Medium"** และเลือก Color Style เป็น **"On Surface Variant"**
+   - แก้ไข Header text เป็น **"ผักสลัดออร์แกนิก"** 
+   - แก้ไข Subhead Text เป็น **"สดใหม่จากฟาร์ม • ฿45 / กิโลกรัม"**
 3. **จัดกลุ่มด้วย Auto Layout และทำซ้ำ (Duplicate):**
    - คลิกขวาที่ Card แล้วเลือก **"Add Auto Layout"** (คีย์ลัด `Shift + A`) เพื่อให้การจัดระยะห่างภายใน Card เป็นไปตามมาตรฐาน
    - คัดลอก Card ออกมาเป็น 4 รายการ โดยกด `Cmd/Ctrl + D` แล้วเปลี่ยนข้อมูลสินค้าให้หลากหลาย:
