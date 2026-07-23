@@ -267,121 +267,135 @@ Prompt ที่ไม่ดี:
 
 **ขั้นตอนที่ 2.2: Import Material Design 3 Kit**
 
-> **หมายเหตุ:** วิธีเดิม (`Ctrl+P` เปิด Quick Actions แล้วพิมพ์ "Community") ใช้ไม่ได้แล้วใน Figma Web เวอร์ชันปัจจุบัน ให้ใช้ขั้นตอนด้านล่างแทน
 
-1. เปิด Browser ไปที่ https://www.figma.com/community
-2. ค้นหา **"Material 3 Design Kit"**
-3. เลือก Design Kit ที่เผยแพร่โดย **Google**
-4. กด **"Duplicate"** เพื่อ copy เข้า workspace ของคุณ (ถ้าอาจารย์แจกไฟล์ `.fig` มาให้ ให้ Import ไฟล์ Material Design 3 Design Kit ที่อาจารย์เตรียมไว้แทน — ง่ายและเร็วกว่า)
-5. กลับมาที่ไฟล์ของคุณ และเปิด **Assets Panel** (ด้านซ้าย, icon กล่อง)
-6. คลิก **"Team Library"** icon → Enable Material 3 Kit
+1. เลือกเมนู Assets ที่อยู่ด้านซ้าย
+2. เลือก Material 3 Design Kit
 
 **ขั้นตอนที่ 2.3: สร้าง Frame สำหรับ Mobile**
 1. กด `F` (Frame tool)
-2. ด้านขวามือ สร้าง Mobile Frame ความกว้างประมาณ 360 dp ความสูงประมาณ 800 dp (ไม่ต้องยึดชื่อ Preset เพราะ Figma เปลี่ยนชื่อ/ค่า Preset อยู่เรื่อย ๆ ให้พิมพ์ตัวเลข W/H เองในแผง Properties ด้านขวา)
-3. สร้าง Frame 3 ชุด ตั้งชื่อ:
+2. ด้านขวามือ สร้าง Mobile Frame  ความกว้างประมาณ 360 dp ความสูงประมาณ 800 dp  (ไม่ต้องยึดชื่อ Preset เพราะ Figma เปลี่ยนชื่อ/ค่า Preset อยู่เรื่อย ๆ ให้พิมพ์ตัวเลข W/H เองในแผง Properties ด้านขวา)
+3. สร้าง Frame 3 ชุด (ใช้การ Copy & Paste ได้)ตั้งชื่อ:
    - `Home Screen`
    - `Detail Screen`
    - `Profile Screen`
-4. จัดเรียง Frame ให้ชิดกัน ห่างกัน 40 dp
+4. จัดเรียง Frame ให้ชิดกัน
 
-**ขั้นตอนที่ 2.3b: ลอง Inspect Panel — ดูว่า Design เชื่อมกับ Code อย่างไร**
 
-ก่อนเริ่มออกแบบจริง ให้ลองคลิกเลือก Component ใดก็ได้ที่ลากมาจาก Material 3 Kit (เช่น Button หรือ Card ตัวอย่าง) แล้วเปิดแผง **"Inspect"** (มุมขวาบน ถัดจาก Design/Prototype tab) สังเกต:
-- แท็บ **Code** → ดู CSS ที่ Figma generate ให้ (สังเกตค่า padding, border-radius, สี ที่ตรงกับ Design Token)
-- ถ้ามีปลั๊กอินหรือแท็บ Android/iOS → ดูว่าเขาแปลงค่าพวกนี้เป็นหน่วย dp/pt อย่างไร
-
-เป้าหมายคือให้เห็นว่าตัวเลขที่ออกแบบใน Figma (padding, spacing, สี) ไม่ได้ลอย ๆ แต่แปลงตรงไปเป็นค่าที่ใช้เขียน Flutter widget ได้จริงในการทดลองที่ 3
 
 #### ขั้นตอนออกแบบหน้าหลัก (Home Screen)
 
 **ขั้นตอนที่ 2.4: ออกแบบ App Bar**
 1. คลิกที่ Frame `Home Screen`
-2. ไปที่ Assets → ค้นหา **"Top App Bar"**
-3. ลาก Component `Center-aligned Top App Bar` ลงบน Frame
+2. เลื่อก Assets → Material 3 Design Kit -> **App bar**
+3. ลาก Component ลงบน Frame 
 4. วางที่ด้านบนสุด (y = 0)
 5. ปรับ width ให้เต็ม Frame (360 dp)
-6. Double-click เพื่อแก้ไขชื่อ: เปลี่ยนเป็นชื่อ App ของคุณ
+6. Double-click เพื่อแก้ไขชื่อ: **"Green Market by (ชื่อนักศึกษา)"
 
-**ขั้นตอนที่ 2.5: ออกแบบ Content Area**
+**ขั้นตอนที่ 2.5: ออกแบบ Content Area (รายการสินค้าผักผลไม้)**
+1. **สร้าง Card สำหรับ Item สินค้า:**
+   - ไปที่แผง Assets -> ค้นหา **"Card"** แล้วลาก Component `Elevated Card` (หรือ `Filled Card`) ลงบน Frame
+   - ปรับขนาด Card เป็น Width = 328px, Height = 100px
+   - ที่แผง Design ด้านขวา สังเกตส่วน Fill: ให้เลือกใช้ **Color Token** จาก M3 Kit เช่น `Surface Variant` เพื่อรองรับ Light/Dark Mode
+   - จัดตำแหน่ง Card ให้อยู่กลางหน้าจอ: X = 16px, Y = 80px (ต่อจาก App Bar)
+2. **เพิ่ม Icon และ Text บน Card สินค้า:**
+   - ลาก Container หรือ Frame ขนาด 48 × 48px ใส่ทางด้านซ้ายของ Card กำหนดสีพื้นหลังเป็น `Primary Container` และใส่ Icon ผลไม้/ผัก (เช่น `shopping_basket` หรือ `eco`) ให้มีสี `On Primary Container`
+   - กด `T` (Text Tool) เพื่อสร้างข้อความชื่อสินค้า เช่น **"ผักสลัดออร์แกนิก"** -> ในแผง Design ฝั่งขวา ส่วน Text Style ให้เลือก **"Title Medium"** จาก M3 Kit
+   - สร้างข้อความรายละเอียดราคา/คำอธิบาย เช่น **"สดใหม่จากฟาร์ม • ฿45 / กิโลกรัม"** -> เลือก Text Style **"Body Medium"** และเลือก Color Style เป็น **"On Surface Variant"**
+3. **จัดกลุ่มด้วย Auto Layout และทำซ้ำ (Duplicate):**
+   - คลิกขวาที่ Card แล้วเลือก **"Add Auto Layout"** (คีย์ลัด `Shift + A`) เพื่อให้การจัดระยะห่างภายใน Card เป็นไปตามมาตรฐาน
+   - คัดลอก Card ออกมาเป็น 4 รายการ โดยกด `Cmd/Ctrl + D` แล้วเปลี่ยนข้อมูลสินค้าให้หลากหลาย:
+     - รายการที่ 1: ผักสลัดออร์แกนิก (สดใหม่จากฟาร์ม • ฿45 / กิโลกรัม)
+     - รายการที่ 2: สตรอว์เบอร์รีสด (หวานกรอบ เกรดพรีเมียม • ฿120 / กล่อง)
+     - รายการที่ 3: กล้วยหอมทอง (อุดมด้วยวิตามิน • ฿35 / หวี)
+     - รายการที่ 4: มะเขือเทศเชอร์รี (ปลอดสารเคมี 100% • ฿50 / ถุง)
+   - เว้นระยะห่างระหว่าง Card แต่ละใบ (Spacing) เท่ากับ 12px
+4. **เพิ่ม Floating Action Button (FAB):**
+   - ค้นหา **"FAB"** ในแถบ Assets
+   - ลาก `Extended FAB` มาวางไว้บริเวณมุมล่างขวา (X = 220px, Y = 680px)
+   - เปลี่ยนข้อความบน FAB เป็น **"+ เพิ่มสินค้า"**
+5. **เพิ่ม Bottom Navigation Bar:**
+   - ค้นหา **"Navigation Bar"** ในแถบ Assets
+   - ลากมาวางด้านล่างสุดของ Frame (X = 0, Y = 720px ให้ความสูงคลุมพอดี 80px ถึง Y = 800)
+   - กำหนดให้มี 3 Destinaton Icon/Label:
+     - Item 1: `หน้าหลัก` (Icon: home, สถานะ Active)
+     - Item 2: `ค้นหา` (Icon: search)
+     - Item 3: `โปรไฟล์` (Icon: person)
 
-สำหรับ App หมวดไหนก็ได้ที่คุณต้องการ (เช่น Recipe App, Todo App, E-commerce):
+---
 
-1. **สร้าง Card สำหรับ Item:**
-   - ไปที่ Assets Panel → ค้นหา **"Card"** แล้วลาก Component `Elevated Card` (หรือ `Filled Card`) จาก Material 3 Kit ลงบน Frame แทนการวาด Rectangle เอง — Corner Radius จะติดมากับ Component โดยอัตโนมัติตามสเปก M3 ไม่ต้องตั้งเอง
-   - ปรับขนาดเป็น 328 × 100 dp
-   - ถ้าต้องการปรับสีพื้น ให้ไปที่ Fill → เลือก **Color Style** จาก Library ที่ Enable ไว้ในขั้นตอน 2.2 (เช่น "Surface Variant") แทนการพิมพ์ Hex Code เอง เพราะ Kit ผูก Design Token ไว้ให้แล้ว การพิมพ์ Hex ตรง ๆ จะทำให้ Dark Mode พังทันทีตามที่อธิบายในทฤษฎีข้อ 1.1
-   - จัดตำแหน่ง: x=16 dp, y=80 dp (ใต้ App Bar)
+#### ขั้นตอนออกแบบหน้ารายละเอียดสินค้า (Detail Screen)
 
-2. **เพิ่ม Text บน Card:**
-   - กด `T` (Text tool) คลิกบน Card
-   - พิมพ์ชื่อ Item แล้วไปที่ Text Style ในแผงขวา → เลือก **"Title Medium"** จาก Library (แทนการตั้งขนาด 16/Weight Medium เอง)
-   - เพิ่ม Subtitle แล้วเลือก Text Style **"Body Medium"** จาก Library จากนั้นเปลี่ยนสีตัวอักษรเป็น Color Style **"On Surface Variant"** (แทนการพิมพ์ `#666666`) เพื่อให้สีเปลี่ยนตาม Light/Dark Mode อัตโนมัติเช่นเดียวกับพื้น Card
+**ขั้นตอนที่ 2.6: ออกแบบ Detail Screen**
+1. คลิกเลือก Frame `2_Detail_Screen`
+2. ลาก Component **Top App Bar** มาวางด้านบนสุด (X = 0, Y = 0)
+   - เปลี่ยน Title เป็น **"รายละเอียดสินค้า"**
+   - เปิดการแสดงผล Navigation Icon ฝั่งซ้ายให้เป็นไอคอนย้อนกลับ (`arrow_back`)
+3. **ส่วนแสดงรูปภาพปกสินค้า (Banner Image):**
+   - สร้าง Rectangle ขนาด 360 × 200px วางต่อใต้ App Bar (Y = 64px)
+   - ตั้งค่าสีพื้นหลังเป็น `Primary Container` และใส่ Icon ขนาดใหญ่ตรงกลางเพื่อจำลองเป็นรูปภาพสินค้า
+4. **ส่วนรายละเอียดเนื้อหา (Product Info):**
+   - ใส่ข้อความชื่อสินค้า **"ผักสลัดออร์แกนิก"** -> กำหนด Text Style เป็น **"Headline Medium"**
+   - ใส่ข้อความราคา **"฿45 / กิโลกรัม"** -> กำหนด Text Style เป็น **"Title Large"** สี `Primary`
+   - ใส่ข้อความหัวข้อ **"รายละเอียดสินค้า"** -> Text Style **"Title Medium"**
+   - ใส่ข้อความบรรยาย: **"ผักสลัดออร์แกนิกปลูกด้วยระบบไฮโดรโปนิกส์ ไม่ใช้สารเคมีฆ่าแมลง เก็บสดใหม่ทุกเช้า เหมาะสำหรับทำสลัดสุขภาพ"** -> Text Style **"Body Large"**
+5. **ส่วนปุ่มดำเนินการ (Action Buttons):**
+   - ลาก Component **Filled Button** มาวางด้านล่าง -> กำหนด Width = 328px, เปลี่ยนข้อความเป็น **"เพิ่มลงตะกร้าสินค้า"** (Primary Action)
+   - ลาก Component **Outlined Button** วางต่อด้านล่าง -> กำหนด Width = 328px, เปลี่ยนข้อความเป็น **"ย้อนกลับ"** (Secondary Action)
 
-3. **สร้าง Card รูปแบบเดียวกัน 3–4 ชุด:**
-   - Select Card ทั้งหมด (กด Cmd/Ctrl + G เพื่อ Group)
-   - Duplicate ด้วย `Cmd/Ctrl + D`
-   - เลื่อนลงมา 16 dp จาก Card บน
-   - ทำซ้ำ 2–3 ครั้ง
+---
 
-4. **เพิ่ม Bottom Navigation Bar:**
-   - ไปที่ Assets → ค้นหา **"Navigation Bar"**
-   - ลาก Component ลงที่ด้านล่างสุด (y = 752 dp สำหรับ Frame สูง 800 dp)
-   - ปรับ width: 360 dp
-   - แก้ไข Label: เลือก 3 Tab ที่เหมาะกับ App (เช่น Home/Search/Profile)
+#### ขั้นตอนออกแบบหน้าโปรไฟล์ผู้ใช้ (Profile Screen)
 
-5. **เพิ่ม FAB (Floating Action Button):**
-   - ไปที่ Assets → ค้นหา **"FAB"**
-   - เลือก Extended FAB หรือ Regular FAB
-   - วางที่ด้านล่างขวา: x=280 dp, y=680 dp
+**ขั้นตอนที่ 2.6b: ออกแบบ Profile Screen**
+1. คลิกเลือก Frame `3_Profile_Screen`
+2. ลาก **Top App Bar** มาวางด้านบนสุด เปลี่ยน Title เป็น **"โปรไฟล์ผู้ใช้"**
+3. **ส่วนข้อมูลผู้ใช้งาน:**
+   - สร้าง Circle (กด `O`) ขนาด 80 × 80px วางไว้กึ่งกลางหน้าจอ (X = 140px, Y = 100px) กำหนดสีเป็น `Primary Container` และใส่ Text ตัวอักษรย่อ หรือ Icon `person`
+   - ใส่ข้อความชื่อผู้ใช้ **"สมชาย ใจดี"** -> Text Style **"Headline Small"**
+   - ใส่ข้อความอีเมล **"somchai.j@email.com"** -> Text Style **"Body Medium"** สี `On Surface Variant`
+4. **ส่วนปุ่มจัดการโปรไฟล์:**
+   - ลาก Component **Outlined Button** วางกึ่งกลาง -> เปลี่ยนข้อความเป็น **"แก้ไขข้อมูลโปรไฟล์"**
+5. **วาง Bottom Navigation Bar:**
+   - คัดลอก Navigation Bar จากหน้า Home มาวางที่ตำแหน่งเดียวกัน (Y = 720px)
+   - ปรับสถานะ Active ให้ไฮไลท์อยู่ที่ Item 3 (`โปรไฟล์`)
 
-**ขั้นตอนที่ 2.6: ออกแบบ Detail Screen (ทำเองอย่างน้อย 1 จอ)**
+---
 
-คิด flow ว่า: เมื่อกด Card บน Home จะไป Detail Screen อะไร  
-ออกแบบ Detail Screen ให้มีอย่างน้อย:
-- Top App Bar พร้อม Back button (ไอคอน arrow_back)
-- รูปภาพ/Banner ขนาดใหญ่
-- ชื่อและรายละเอียด
-- ปุ่ม Action หลัก 1 ปุ่ม (FilledButton)
+#### ขั้นตอนทำ Prototype และเชื่อมโยงหน้าจอ
 
-**ขั้นตอนที่ 2.6b: ออกแบบ Profile Screen (Bonus ไม่บังคับ)**
+**ขั้นตอนที่ 2.7: เพิ่ม Prototype Connection**
+1. สลับโหมดการทำงานที่แผงขวาจาก **Design** เป็น **Prototype**
+2. เลือก Card สินค้ารายการแรก ("ผักสลัดออร์แกนิก") ในหน้า `1_Home_Screen`
+3. ลากเส้นเชื่อมโยง (Node) จาก Card ใบนั้นไปยัง Frame `2_Detail_Screen`
+4. ในหน้าต่าง Interaction Details กำหนดค่าดังนี้:
+   - **Trigger:** `On tap`
+   - **Action:** `Navigate to` -> `2_Detail_Screen`
+   - **Animation:** `Smart animate` หรือ `Slide in` (Ease out 300ms)
+5. ทดลองทดสอบความถูกต้องโดยกดปุ่ม **Present** (รูปไอคอน Play มุมบนขวา หรือ `Cmd/Ctrl + Shift + Enter`)
 
-Frame `Profile Screen` ที่สร้างไว้ในขั้นตอนที่ 2.3 ไม่ใช่ส่วนบังคับของ Checklist การประเมิน (ซึ่งต้องการแค่ Home + 1 หน้าอื่นเป็นอย่างน้อย) แต่ถ้ามีเวลาเหลือ แนะนำให้ลองออกแบบเพื่อฝึกฝีมือเพิ่ม โดยควรมีอย่างน้อย:
-- Avatar วงกลมและชื่อผู้ใช้ (Title Large)
-- Bottom Navigation Bar เดียวกับ Home Screen (ให้ Tab "โปรไฟล์" เป็น Active)
-- ปุ่ม "แก้ไขโปรไฟล์" (OutlinedButton)
+**ขั้นตอนที่ 2.8: บันทึกผลการทดลอง**
 
-หากไม่มีเวลาออกแบบ Profile Screen ให้ลบ Frame นี้ทิ้งหรือปล่อยว่างไว้ได้ ไม่มีผลต่อคะแนน
-
-**ขั้นตอนที่ 2.7: เพิ่ม Prototype Connection (Optional, สำหรับ Demo)**
-1. สลับไปที่ **Prototype tab** (แผง Properties ขวา)
-2. Hover ที่ Card บน Home Screen → จะเห็น `+` ปรากฏ
-3. ลาก Connection ไปยัง Detail Screen
-4. ตั้งค่า Interaction: "On tap" → Navigate to → Detail Screen
-5. Transition: Push (Right) → ทดลอง Preview ด้วย `Cmd/Ctrl + Shift + Enter`
-
-**ขั้นตอนที่ 2.8: บันทึกผล**
-
-Screenshot Design ของคุณทั้ง 3 หน้า และตอบคำถาม:
+Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| App ที่ออกแบบคือ? | _________________ |
-| Primary Color ที่ใช้? | _________________ |
-| Navigation Pattern ที่เลือก? | _________________ |
-| ทำไมเลือก Pattern นี้? | _________________ |
+| แอปพลิเคชันที่ออกแบบคือ? | Green Market (แอปพลิเคชันร้านขายสินค้าเกษตรและผักผลไม้สด) |
+| Primary Color ที่เลือกใช้คือ Hex อะไร? | _________________ |
+| Navigation Pattern ที่เลือกใช้ในหน้าหลัก? | NavigationBar (Bottom Navigation) |
+| เหตุผลในการเลือกใช้ Navigation Pattern นี้? | _________________ |
 
 ---
 
 ### การทดลองที่ 3: แปลง Design เป็น Flutter Code (55 นาที)
 
 #### วัตถุประสงค์
-เขียน Flutter Widget จาก Design ที่ออกแบบใน Figma
+เขียน Flutter Widget จาก Design แอปพลิเคชัน **"Green Market"** ที่ออกแบบไว้ใน Figma
 
 #### ขั้นตอนเตรียมการ
 
 **ขั้นตอนที่ 3.1: เตรียม Flutter Project**
-1. เปิด Terminal/Command Prompt
+1. เปิด Terminal / Command Prompt
 2. สร้าง Flutter Project ใหม่:
    ```bash
    flutter create week03_ui_lab
@@ -411,7 +425,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Week 03 UI Lab',
+      title: 'Green Market App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,           // เปิดใช้ Material 3
@@ -428,33 +442,34 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-> **หมายเหตุ:** ถ้าไฟล์ `color_schemes.g.dart` หายหรือ Export ไม่สำเร็จ ให้ใช้ทางเลือกสำรองนี้แทน (ผลลัพธ์ใกล้เคียงกันมาก เพราะคำนวณจาก Seed Color เดียวกัน):
+> **หมายเหตุ:** ถ้าไฟล์ `color_schemes.g.dart` หายหรือ Export ไม่สำเร็จ ให้ใช้ทางเลือกสำรองนี้แทน:
 > ```dart
 > colorScheme: ColorScheme.fromSeed(
->   seedColor: const Color(0xFF2E7D32), // ← เปลี่ยนเป็นสีที่คุณเลือกใน Figma
+>   seedColor: const Color(0xFF2E7D32), // สีเขียวสำหรับ Green Market
 >   brightness: Brightness.light,
 > ),
 > ```
 
 **ขั้นตอนที่ 3.3: วิเคราะห์ Design เป็น Widget Tree**
 
-ก่อนเขียน code ให้วาด Widget Tree บนกระดาษหรือ Whiteboard (หรือใช้เครื่องมือวาดออนไลน์อย่าง Excalidraw หรือ FigJam ซึ่งสะดวกกว่าสำหรับนักศึกษายุคนี้):
+ก่อนเขียน code ให้วาด Widget Tree บนกระดาษหรือ Whiteboard:
 
 ```
-สำหรับ Home Screen:
+สำหรับ Green Market Home Screen:
 
 Scaffold
 ├── AppBar
-│   └── Text("ชื่อ App")
+│   └── Text("Green Market")
 ├── body: ListView
-│   ├── ItemCard (item 1)
-│   ├── ItemCard (item 2)
-│   └── ItemCard (item 3)
-├── floatingActionButton: FloatingActionButton
+│   ├── ItemCard (ผักสลัดออร์แกนิก)
+│   ├── ItemCard (สตรอว์เบอร์รีสด)
+│   ├── ItemCard (กล้วยหอมทอง)
+│   └── ItemCard (มะเขือเทศเชอร์รี)
+├── floatingActionButton: FloatingActionButton.extended ("+ เพิ่มสินค้า")
 └── bottomNavigationBar: NavigationBar
-      ├── NavigationDestination (Home)
-      ├── NavigationDestination (Search)
-      └── NavigationDestination (Profile)
+      ├── NavigationDestination (หน้าหลัก)
+      ├── NavigationDestination (ค้นหา)
+      └── NavigationDestination (โปรไฟล์)
 ```
 
 **ขั้นตอนที่ 3.4: สร้างไฟล์โครงสร้าง**
@@ -463,6 +478,7 @@ Scaffold
 ```
 lib/
 ├── main.dart
+├── color_schemes.g.dart
 ├── screens/
 │   ├── home_screen.dart
 │   └── detail_screen.dart
@@ -470,7 +486,7 @@ lib/
     └── item_card.dart
 ```
 
-สร้างโฟลเดอร์และไฟล์:
+สร้างโฟลเดอร์และไฟล์ด้วยคำสั่ง:
 ```bash
 mkdir -p lib/screens lib/widgets
 touch lib/screens/home_screen.dart
@@ -487,7 +503,7 @@ touch lib/widgets/item_card.dart
 ```dart
 import 'package:flutter/material.dart';
 
-/// ItemCard แสดงข้อมูล Item แบบ Card
+/// ItemCard แสดงข้อมูลสินค้าในแอป Green Market
 /// เป็น Reusable Widget ที่รับ data ผ่าน Constructor
 class ItemCard extends StatelessWidget {
   final String title;
@@ -505,17 +521,14 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ดึง ColorScheme จาก Theme ที่ตั้งค่าไว้ใน main.dart
+    // ดึง ColorScheme และ TextTheme จาก Theme ของแอพ
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
     return Card(
-      // Material 3 Card: elevation = 1 (Elevated style)
-      elevation: 1,
+      elevation: 1, // Material 3 Elevated Card style
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-      // สำคัญ: ต้องมี clipBehavior เพื่อให้ Ripple effect ของ InkWell
-      // ถูกตัดให้โค้งตามขอบ Card ไม่ล้นออกไปเป็นมุมเหลี่ยม
-      clipBehavior: Clip.antiAlias,
+      clipBehavior: Clip.antiAlias, // ตัดขอบ Ripple Effect ไม่ให้ล้น Card
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
@@ -523,7 +536,7 @@ class ItemCard extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Row(
             children: [
-              // Icon Container
+              // Product Icon Container
               Container(
                 width: 48,
                 height: 48,
@@ -538,14 +551,13 @@ class ItemCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 16),
-              // Text Content
+              // Product Detail Text
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       title,
-                      // ใช้ titleMedium จาก TextTheme (Material 3)
                       style: textTheme.titleMedium,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -553,8 +565,6 @@ class ItemCard extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       subtitle,
-                      // ใช้ bodyMedium ให้ตรงกับสเปกที่ออกแบบไว้ใน Figma
-                      // (ขั้นตอนที่ 2.5 ใช้ Text Style "Body Medium" สำหรับ Subtitle)
                       style: textTheme.bodyMedium?.copyWith(
                         color: colorScheme.onSurfaceVariant,
                       ),
@@ -595,30 +605,29 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // State: tab ที่เลือกอยู่ใน Bottom Navigation
   int _selectedIndex = 0;
 
-  // ข้อมูลตัวอย่าง (ในโปรเจกต์จริงจะดึงจาก API/Database)
+  // รายการสินค้าตัวอย่างของแอป Green Market
   final List<Map<String, dynamic>> _items = [
     {
-      'title': 'รายการที่ 1',
-      'subtitle': 'คำอธิบายสั้น ๆ ของรายการนี้',
-      'icon': Icons.star_outline,
+      'title': 'ผักสลัดออร์แกนิก',
+      'subtitle': 'สดใหม่จากฟาร์ม • ฿45 / กิโลกรัม',
+      'icon': Icons.eco,
     },
     {
-      'title': 'รายการที่ 2',
-      'subtitle': 'ข้อมูลเพิ่มเติมของรายการที่สอง',
-      'icon': Icons.favorite_outline,
+      'title': 'สตรอว์เบอร์รีสด',
+      'subtitle': 'หวานกรอบ เกรดพรีเมียม • ฿120 / กล่อง',
+      'icon': Icons.shopping_basket,
     },
     {
-      'title': 'รายการที่ 3',
-      'subtitle': 'รายละเอียดของรายการที่สาม',
-      'icon': Icons.bookmark_outline,
+      'title': 'กล้วยหอมทอง',
+      'subtitle': 'อุดมด้วยวิตามิน • ฿35 / หวี',
+      'icon': Icons.lightbulb_outline,
     },
     {
-      'title': 'รายการที่ 4',
-      'subtitle': 'ข้อมูลของรายการที่สี่',
-      'icon': Icons.schedule_outlined,
+      'title': 'มะเขือเทศเชอร์รี',
+      'subtitle': 'ปลอดสารเคมี 100% • ฿50 / ถุง',
+      'icon': Icons.local_florist,
     },
   ];
 
@@ -631,22 +640,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Material 3 AppBar: Center-aligned
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('My App'),
+        title: const Text('Green Market'),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
-            onPressed: () {
-              // TODO: เพิ่ม Search functionality
-            },
-            tooltip: 'ค้นหา',
+            onPressed: () {},
+            tooltip: 'ค้นหาสินค้า',
           ),
         ],
       ),
-
-      // Body: ListView แสดง ItemCard
       body: ListView.builder(
         padding: const EdgeInsets.symmetric(vertical: 8),
         itemCount: _items.length,
@@ -657,7 +661,6 @@ class _HomeScreenState extends State<HomeScreen> {
             subtitle: item['subtitle'],
             icon: item['icon'],
             onTap: () {
-              // Navigate ไป Detail Screen พร้อมส่งข้อมูล
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -671,23 +674,18 @@ class _HomeScreenState extends State<HomeScreen> {
           );
         },
       ),
-
-      // FAB: Primary action ของหน้า
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          // TODO: เพิ่มรายการใหม่
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('เพิ่มรายการใหม่'),
+              content: Text('เปิดหน้าเพิ่มสินค้าใหม่'),
               behavior: SnackBarBehavior.floating,
             ),
           );
         },
         icon: const Icon(Icons.add),
-        label: const Text('เพิ่มใหม่'),
+        label: const Text('เพิ่มสินค้า'),
       ),
-
-      // Bottom Navigation Bar (Material 3)
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
         onDestinationSelected: _onItemTapped,
@@ -738,88 +736,77 @@ class DetailScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        // Back button เพิ่มให้อัตโนมัติเมื่อ Navigator มี stack
-        title: Text(title),
+        title: const Text('รายละเอียดสินค้า'),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Banner Image Placeholder
+            // Banner Placeholder สำหรับรูปสินค้า
             Container(
               width: double.infinity,
               height: 200,
               color: colorScheme.primaryContainer,
               child: Icon(
-                Icons.image_outlined,
-                size: 64,
+                Icons.eco,
+                size: 80,
                 color: colorScheme.onPrimaryContainer,
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Title
                   Text(
                     title,
                     style: textTheme.headlineMedium,
                   ),
                   const SizedBox(height: 8),
-
-                  // Subtitle
                   Text(
                     subtitle,
-                    style: textTheme.bodyMedium?.copyWith(
-                      color: colorScheme.onSurfaceVariant,
+                    style: textTheme.titleMedium?.copyWith(
+                      color: colorScheme.primary,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(height: 24),
-
-                  // Detail Content
                   Text(
-                    'รายละเอียด',
+                    'รายละเอียดสินค้า',
                     style: textTheme.titleLarge,
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'นี่คือพื้นที่สำหรับเนื้อหาของรายการ '
-                    'ในโปรเจกต์จริงจะแสดงข้อมูลที่ดึงมาจาก API หรือฐานข้อมูล '
-                    'ตามที่ออกแบบไว้ใน Figma',
+                    'สินค้าเกษตรคุณภาพสูง ปลูกด้วยกระบวนการธรรมชาติ ปลอดภัยจากสารเคมี '
+                    'คัดสรรเป็นพิเศษจากฟาร์มสมาชิกของ Green Market เพื่อให้คุณได้รับประทานอาหาร '
+                    'เพื่อสุขภาพที่สดใหม่ในทุกวัน',
                     style: textTheme.bodyLarge,
                   ),
                   const SizedBox(height: 32),
-
-                  // Action Button
                   SizedBox(
                     width: double.infinity,
                     child: FilledButton.icon(
                       onPressed: () {
-                        // TODO: Primary Action
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('ดำเนินการสำเร็จ'),
+                            content: Text('เพิ่มลงตะกร้าสินค้าเรียบร้อยแล้ว'),
                             behavior: SnackBarBehavior.floating,
                           ),
                         );
                       },
-                      icon: const Icon(Icons.check),
-                      label: const Text('ดำเนินการ'),
+                      icon: const Icon(Icons.shopping_cart),
+                      label: const Text('เพิ่มลงตะกร้าสินค้า'),
                     ),
                   ),
                   const SizedBox(height: 8),
-
-                  // Secondary Action
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton.icon(
                       onPressed: () {
-                        Navigator.pop(context); // กลับหน้าก่อน
+                        Navigator.pop(context);
                       },
                       icon: const Icon(Icons.arrow_back),
-                      label: const Text('กลับ'),
+                      label: const Text('ย้อนกลับ'),
                     ),
                   ),
                 ],
@@ -835,18 +822,13 @@ class DetailScreen extends StatelessWidget {
 
 **ขั้นตอนที่ 3.8: อัปเดต main.dart**
 
-เพิ่ม import และเปลี่ยน home:
+เพิ่ม import และเชื่อมต่อ HomeScreen ให้ถูกต้อง:
 
 ```dart
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';  // ← เพิ่ม import
+import 'screens/home_screen.dart'; // import HomeScreen
 
-void main() {
-  runApp(const MyApp());
-}
-
-// ... (ส่วน MyApp คงเดิม แต่เปลี่ยน home:)
-// home: const HomeScreen(),  ← แก้ไขบรรทัดนี้
+// ในคลาส MyApp ให้กำหนด home: const HomeScreen()
 ```
 
 **ขั้นตอนที่ 3.9: รัน App และตรวจสอบ**
@@ -855,14 +837,13 @@ void main() {
 flutter run
 ```
 
-ตรวจสอบ:
-- [ ] App Bar แสดงชื่อถูกต้อง
-- [ ] มี Card แสดง 4 รายการ
-- [ ] กด Card แล้วไป Detail Screen ได้
-- [ ] กด Back button กลับ Home ได้
-- [ ] Bottom Navigation สลับ Tab ได้ (ไฮไลท์ถูกต้อง)
-- [ ] FAB ปรากฏและแสดง SnackBar เมื่อกด
-- [ ] สีตรงกับ Material 3 Color Scheme
+ตรวจสอบความถูกต้อง:
+- [ ] App Bar แสดงชื่อ "Green Market"
+- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [ ] Bottom Navigation สลับ Tab ได้
+- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
 
 ---
 
@@ -893,12 +874,9 @@ Create a Flutter StatelessWidget called "UserProfileCard" that:
 5. Shows a row of 3 stats: Posts, Followers, Following (using Column: number + label)
 6. Uses Card widget with proper Material 3 elevation
 7. Reads colors from Theme.of(context).colorScheme (NO hardcoded colors)
-8. Has proper padding (16 logical pixels) and spacing (8 logical pixels between elements)
+8. Has proper padding (16px) and spacing (8px between elements)
 9. Accepts these constructor parameters: name, email, avatarUrl (nullable), 
    postsCount, followersCount, followingCount
-10. Do not hard-code typography — use Theme.of(context).textTheme for all text styles
-11. Follow Material Design 3 guidelines throughout
-12. Support both Light and Dark theme correctly
 
 Add brief comments explaining each section.
 ```
@@ -1023,14 +1001,14 @@ IconButton(
 ## 🎯 Checklist การประเมิน
 
 ### Figma Design (5 คะแนน)
-- [ ] มี Frame ขนาด 360 × 800 หรือ Mobile standard
-- [ ] ออกแบบอย่างน้อย 2 หน้า (Home + 1 หน้าอื่น)
+- [ ] มี Frame ขนาด 360 × 800 (Android Compact) หรือ Mobile standard
+- [ ] ออกแบบอย่างน้อย 2 หน้า (Home + 1 หน้าอื่น เช่น Detail Screen)
 - [ ] ใช้ Material Design 3 Component (AppBar, Card, Button, Navigation)
-- [ ] สีสม่ำเสมอ ใช้ Color Scheme จาก Material Theme Builder
+- [ ] สีสม่ำเสมอ ใช้ Color Scheme จาก Material Theme Builder / M3 Kit
 - [ ] Typography ถูกต้องตาม Scale (ไม่ใช้ขนาดสุ่ม)
 
 ### Flutter Code (10 คะแนน)
-- [ ] ตั้งค่า Material 3 ด้วย `useMaterial3: true` และใช้ `ColorScheme` ที่ Export จาก Material Theme Builder (`color_schemes.g.dart`)
+- [ ] ตั้งค่า Material 3 ด้วย `useMaterial3: true` และ `ColorScheme.fromSeed` (หรือ `color_schemes.g.dart`)
 - [ ] มี `ItemCard` widget แยกไฟล์ และ reusable
 - [ ] มี Bottom Navigation Bar ทำงานได้ถูกต้อง
 - [ ] Navigate ไป Detail Screen และ Back ได้
