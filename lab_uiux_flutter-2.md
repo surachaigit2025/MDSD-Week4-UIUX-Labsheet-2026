@@ -253,7 +253,7 @@ Prompt ที่ไม่ดี:
 
 ---
 
-### การทดลองที่ 2: ออกแบบ UI Mockup ด้วย Figma (55 นาที)
+### การทดลองที่ 2: ออกแบบ UI Mockup ด้วย Figma
 
 #### วัตถุประสงค์
 สร้าง Mockup ของ Mobile App อย่างน้อย 3 หน้าด้วย Material Design 3
@@ -316,32 +316,32 @@ Prompt ที่ไม่ดี:
    - ลาก `Extended FAB` มาวางไว้บริเวณมุมล่างขวา (X = 220px, Y = 680px)
    - เปลี่ยนข้อความบน FAB เป็น **"+ เพิ่มสินค้า"**
 5. **เพิ่ม Bottom Navigation Bar:**
-   - ค้นหา **"Navigation Bar"** ในแถบ Assets
-   - ลากมาวางด้านล่างสุดของ Frame (X = 0, Y = 720px ให้ความสูงคลุมพอดี 80px ถึง Y = 800)
+   - ค้นหา **"Navigation Bar: Vertical items"** ในแถบ Assets
+   - ลากมาวางด้านล่างสุดของ Frame (X = 0, Y = 741px)
    - กำหนดให้มี 3 Destinaton Icon/Label:
      - Item 1: `หน้าหลัก` (Icon: home, สถานะ Active)
      - Item 2: `ค้นหา` (Icon: search)
      - Item 3: `โปรไฟล์` (Icon: person)
-
+**กรณีหา icon ไม่เจอ ให้เปลี่ยนไปเลือก Simple Design System**
 ---
 
 #### ขั้นตอนออกแบบหน้ารายละเอียดสินค้า (Detail Screen)
 
 **ขั้นตอนที่ 2.6: ออกแบบ Detail Screen**
-1. คลิกเลือก Frame `2_Detail_Screen`
-2. ลาก Component **Top App Bar** มาวางด้านบนสุด (X = 0, Y = 0)
+1. คลิกเลือก Frame `Detail_Screen`
+2. ลาก Component **App Bar** มาวางด้านบนสุด (X = 0, Y = 0)
    - เปลี่ยน Title เป็น **"รายละเอียดสินค้า"**
-   - เปิดการแสดงผล Navigation Icon ฝั่งซ้ายให้เป็นไอคอนย้อนกลับ (`arrow_back`)
+   - เปิดการแสดงผล Navigation Icon ฝั่งซ้ายให้เป็นไอคอนย้อนกลับ (`arrow_back`) **ดูในส่วนของ Leading icon: เปลี่ยนตรง icon**
 3. **ส่วนแสดงรูปภาพปกสินค้า (Banner Image):**
    - สร้าง Rectangle ขนาด 360 × 200px วางต่อใต้ App Bar (Y = 64px)
-   - ตั้งค่าสีพื้นหลังเป็น `Primary Container` และใส่ Icon ขนาดใหญ่ตรงกลางเพื่อจำลองเป็นรูปภาพสินค้า
+   - ตั้งค่าการ Fill ให้เป็น image และใส่รูปภาพขนาดใหญ่ตรงกลางเพื่อจำลองเป็นรูปภาพสินค้า
 4. **ส่วนรายละเอียดเนื้อหา (Product Info):**
    - ใส่ข้อความชื่อสินค้า **"ผักสลัดออร์แกนิก"** -> กำหนด Text Style เป็น **"Headline Medium"**
    - ใส่ข้อความราคา **"฿45 / กิโลกรัม"** -> กำหนด Text Style เป็น **"Title Large"** สี `Primary`
    - ใส่ข้อความหัวข้อ **"รายละเอียดสินค้า"** -> Text Style **"Title Medium"**
    - ใส่ข้อความบรรยาย: **"ผักสลัดออร์แกนิกปลูกด้วยระบบไฮโดรโปนิกส์ ไม่ใช้สารเคมีฆ่าแมลง เก็บสดใหม่ทุกเช้า เหมาะสำหรับทำสลัดสุขภาพ"** -> Text Style **"Body Large"**
 5. **ส่วนปุ่มดำเนินการ (Action Buttons):**
-   - ลาก Component **Filled Button** มาวางด้านล่าง -> กำหนด Width = 328px, เปลี่ยนข้อความเป็น **"เพิ่มลงตะกร้าสินค้า"** (Primary Action)
+   - ลาก Component **Button** มาวางด้านล่าง -> กำหนด Width = 328px, เปลี่ยนข้อความเป็น **"เพิ่มลงตะกร้าสินค้า"** (Primary Action)
    - ลาก Component **Outlined Button** วางต่อด้านล่าง -> กำหนด Width = 328px, เปลี่ยนข้อความเป็น **"ย้อนกลับ"** (Secondary Action)
 
 ---
@@ -350,14 +350,14 @@ Prompt ที่ไม่ดี:
 
 **ขั้นตอนที่ 2.6b: ออกแบบ Profile Screen**
 1. คลิกเลือก Frame `3_Profile_Screen`
-2. ลาก **Top App Bar** มาวางด้านบนสุด เปลี่ยน Title เป็น **"โปรไฟล์ผู้ใช้"**
+2. ลาก **oApp Bar** มาวางด้านบนสุด เปลี่ยน Title เป็น **"โปรไฟล์ผู้ใช้"**
 3. **ส่วนข้อมูลผู้ใช้งาน:**
    - สร้าง Circle (กด `O`) ขนาด 80 × 80px วางไว้กึ่งกลางหน้าจอ (X = 140px, Y = 100px) กำหนดสีเป็น `Primary Container` และใส่ Text ตัวอักษรย่อ หรือ Icon `person`
    - ใส่ข้อความชื่อผู้ใช้ **"สมชาย ใจดี"** -> Text Style **"Headline Small"**
-   - ใส่ข้อความอีเมล **"somchai.j@email.com"** -> Text Style **"Body Medium"** สี `On Surface Variant`
+   - ใส่ข้อความอีเมล **"student_ID@kmitl.ac.th"** -> Text Style **"Body Medium"** สี `On Surface Variant`
 4. **ส่วนปุ่มจัดการโปรไฟล์:**
-   - ลาก Component **Outlined Button** วางกึ่งกลาง -> เปลี่ยนข้อความเป็น **"แก้ไขข้อมูลโปรไฟล์"**
-5. **วาง Bottom Navigation Bar:**
+   - ลาก Component **Button - Outline** วางกึ่งกลาง -> เปลี่ยนข้อความเป็น **"แก้ไขข้อมูลโปรไฟล์"**
+5. **วาง Navigation Bar: Horizontal โดยการคัดลอกจากหน้าหลัก**
    - คัดลอก Navigation Bar จากหน้า Home มาวางที่ตำแหน่งเดียวกัน (Y = 720px)
    - ปรับสถานะ Active ให้ไฮไลท์อยู่ที่ Item 3 (`โปรไฟล์`)
 
@@ -379,16 +379,13 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-| คำถาม | คำตอบ |
-|-------|-------|
-| แอปพลิเคชันที่ออกแบบคือ? | Green Market (แอปพลิเคชันร้านขายสินค้าเกษตรและผักผลไม้สด) |
-| Primary Color ที่เลือกใช้คือ Hex อะไร? | _________________ |
-| Navigation Pattern ที่เลือกใช้ในหน้าหลัก? | NavigationBar (Bottom Navigation) |
-| เหตุผลในการเลือกใช้ Navigation Pattern นี้? | _________________ |
+```image
+วางรูปหน้าจอ ที่นี่
+```
 
 ---
 
-### การทดลองที่ 3: แปลง Design เป็น Flutter Code (55 นาที)
+### การทดลองที่ 3: แปลง Design เป็น Flutter Code
 
 #### วัตถุประสงค์
 เขียน Flutter Widget จาก Design แอปพลิเคชัน **"Green Market"** ที่ออกแบบไว้ใน Figma
