@@ -936,7 +936,7 @@ Add brief comments explaining each section.
 1. สร้างไฟล์ `lib/widgets/user_profile_card.dart`
 2. วาง code จาก AI Studio
 3. แก้ไขส่วนที่ผิดหรือไม่เหมาะสม (ถ้ามี)
-4. Import และใช้ใน Profile Tab ของ Home Screen
+4. Import และใช้ใน Profile Tab ของ Home Screen (สอบถาม AI ว่าต้องทำอย่างไร)
 
 **ขั้นตอนที่ 4.5: ทดลอง Multimodal — ส่งรูป Figma ให้ AI วิเคราะห์**
 
@@ -950,8 +950,12 @@ Add brief comments explaining each section.
    Then implement it as a Flutter StatelessWidget.
    Use Material 3 components and read colors from Theme.of(context).colorScheme.
    ```
-5. ดู code ที่ได้ และเปรียบเทียบกับ code ที่เขียนเองในการทดลองที่ 3
+5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
+   
+```text
+เขียนผลการเปรียบเทียบที่นี่
 
+```
 ---
 
 ### การทดลองที่ 5: Dark Mode และ Accessibility Check (20 นาที)
@@ -962,17 +966,19 @@ Add brief comments explaining each section.
 **ขั้นตอนที่ 5.1: ทดสอบ Dark Mode**
 
 1. ใน `main.dart` เปลี่ยน `themeMode` เป็น `ThemeMode.dark` ชั่วคราว
-2. รัน App → ตรวจสอบว่าทุก Text อ่านออกไหม
+2. รัน App → ตรวจสอบว่าทุก Text อ่านออกหรือไหม
 3. มีสีไหนที่ contrast ต่ำเกินไปไหม (ตัวอักษรจางบนพื้นหลังจาง)
 4. เปลี่ยนกลับเป็น `ThemeMode.system`
 
-> **ถ้าพบปัญหา:** ตรวจสอบว่าใช้ `colorScheme.onSurface` / `colorScheme.onSurfaceVariant` สำหรับ text แทนที่จะ hardcode สี
+
 
 **ขั้นตอนที่ 5.2: ตรวจสอบ Touch Target Size**
 
 ใน Flutter DevTools:
 1. รัน App ใน Debug mode: `flutter run --debug`
-2. เปิด **Flutter Inspector** ใน DevTools
+2. เปิด **Flutter Inspector** กดคีย์ลัด Ctrl + Shift + P (สำหรับ Windows) หรือ Cmd + Shift + P (สำหรับ macOS)
+
+พิมพ์คำว่า: Flutter: Open DevTools
 3. Enable **"Show guidelines"** → จะเห็น layout boundary
 4. ตรวจสอบว่า Interactive element ทุกชิ้นมีขนาดอย่างน้อย **48×48 dp**
 
@@ -1034,31 +1040,6 @@ IconButton(
 ```
 คำตอบ: _______________________________________________
 ```
-
----
-
-## 🎯 Checklist การประเมิน
-
-### Figma Design (5 คะแนน)
-- [ ] มี Frame ขนาด 360 × 800 (Android Compact) หรือ Mobile standard
-- [ ] ออกแบบอย่างน้อย 2 หน้า (Home + 1 หน้าอื่น เช่น Detail Screen)
-- [ ] ใช้ Material Design 3 Component (AppBar, Card, Button, Navigation)
-- [ ] สีสม่ำเสมอ ใช้ Color Scheme จาก Material Theme Builder / M3 Kit
-- [ ] Typography ถูกต้องตาม Scale (ไม่ใช้ขนาดสุ่ม)
-
-### Flutter Code (10 คะแนน)
-- [ ] ตั้งค่า Material 3 ด้วย `useMaterial3: true` และ `ColorScheme.fromSeed` (หรือ `color_schemes.g.dart`)
-- [ ] มี `ItemCard` widget แยกไฟล์ และ reusable
-- [ ] มี Bottom Navigation Bar ทำงานได้ถูกต้อง
-- [ ] Navigate ไป Detail Screen และ Back ได้
-- [ ] ไม่มีการ hardcode สี (ใช้ `colorScheme` จาก Theme ทั้งหมด)
-- [ ] Code อ่านได้ มี comment อธิบาย
-- [ ] รองรับ Dark Mode โดยไม่มีปัญหา Contrast (ตรวจตามขั้นตอนในการทดลองที่ 5.1)
-- [ ] `IconButton` ทุกตัวมี `tooltip` หรือ Semantic label ครบ (ตรวจตามขั้นตอนในการทดลองที่ 5.3)
-
-### สรุปการเรียนรู้ (5 คะแนน)
-- [ ] ตอบครบทุกข้อ
-- [ ] แสดงให้เห็นว่าเข้าใจ ไม่ใช่แค่ copy-paste
 
 ---
 
