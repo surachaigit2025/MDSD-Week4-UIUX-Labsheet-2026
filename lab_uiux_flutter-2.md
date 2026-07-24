@@ -403,7 +403,7 @@ Screenshot หน้าจอ Design ทั้ง 3 หน้า และบั
    ```bash
    code .
    ```
-4. คัดลอกไฟล์ `color_schemes.g.dart` ที่ Export มาจาก**การทดลองที่ 1** (ขั้นตอนที่ 1.3) ไปวางไว้ที่ `lib/color_schemes.g.dart` — นี่คือจุดที่งานจากการทดลองที่ 1 ถูกนำมาใช้จริงในการทดลองนี้
+4. คัดลอกไฟล์ `lib/theme.dart` ที่ Export มาจาก**การทดลองที่ 1** (ขั้นตอนที่ 1.3) ไปวางไว้ที่ `lib/theme.dart` — นี่คือจุดที่งานจากการทดลองที่ 1 ถูกนำมาใช้จริงในการทดลองนี้
 
 **ขั้นตอนที่ 3.2: ตั้งค่า Material 3 Theme**
 
@@ -411,42 +411,78 @@ Screenshot หน้าจอ Design ทั้ง 3 หน้า และบั
 
 ```dart
 import 'package:flutter/material.dart';
-import 'color_schemes.g.dart'; // ไฟล์ที่ Export จาก Material Theme Builder ในการทดลองที่ 1
+import 'theme.dart';                 // Theme ที่ Export จาก Material Theme Builder
+import 'screens/home_screen.dart';   // หน้า Home ของแอป
 
 void main() {
+  // จุดเริ่มต้นของโปรแกรม Flutter
   runApp(const MyApp());
 }
 
+///
+/// MyApp เป็น Widget หลักของแอปพลิเคชัน
+///
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+
+    // ------------------------------------------------------------------
+    // สร้าง MaterialTheme จากไฟล์ theme.dart
+    //
+    // Material Theme Builder จะสร้างคลาส MaterialTheme มาให้
+    // โดยต้องส่ง TextTheme เข้าไปใน Constructor
+    //
+    // ThemeData(useMaterial3: true).textTheme
+    // คือ TextTheme มาตรฐานของ Material Design 3
+    // ------------------------------------------------------------------
+    final materialTheme = MaterialTheme(
+      ThemeData(useMaterial3: true).textTheme,
+    );
+
     return MaterialApp(
+
+      // ชื่อแอปพลิเคชัน
       title: 'Green Market App',
+
+      // ซ่อนแถบ DEBUG ที่มุมขวาบน
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,           // เปิดใช้ Material 3
-        colorScheme: lightColorScheme, // ← ColorScheme ที่ Export มาจากการทดลองที่ 1 (Light)
-      ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        colorScheme: darkColorScheme,  // ← ColorScheme ที่ Export มาจากการทดลองที่ 1 (Dark)
-      ),
-      themeMode: ThemeMode.system,     // สลับตามระบบ
+
+      // --------------------------------------------------------------
+      // Theme สำหรับโหมด Light
+      //
+      // ใช้ ThemeData ที่สร้างจาก Material Theme Builder
+      // ภายในประกอบด้วย
+      // - ColorScheme
+      // - Typography
+      // - Surface Color
+      // - Scaffold Background
+      // และค่าต่าง ๆ ของ Material Design 3
+      // --------------------------------------------------------------
+      theme: materialTheme.light(),
+
+      // --------------------------------------------------------------
+      // Theme สำหรับโหมด Dark
+      // --------------------------------------------------------------
+      darkTheme: materialTheme.dark(),
+
+      // --------------------------------------------------------------
+      // เลือก Theme ตามการตั้งค่าของระบบปฏิบัติการ
+      //
+      // ThemeMode.system
+      //   Light Mode -> ใช้ theme
+      //   Dark Mode  -> ใช้ darkTheme
+      // --------------------------------------------------------------
+      themeMode: ThemeMode.system,
+
+      // หน้าแรกของแอป
       home: const HomeScreen(),
     );
   }
 }
 ```
 
-> **หมายเหตุ:** ถ้าไฟล์ `color_schemes.g.dart` หายหรือ Export ไม่สำเร็จ ให้ใช้ทางเลือกสำรองนี้แทน:
-> ```dart
-> colorScheme: ColorScheme.fromSeed(
->   seedColor: const Color(0xFF2E7D32), // สีเขียวสำหรับ Green Market
->   brightness: Brightness.light,
-> ),
-> ```
 
 **ขั้นตอนที่ 3.3: วิเคราะห์ Design เป็น Widget Tree**
 
@@ -476,7 +512,7 @@ Scaffold
 ```
 lib/
 ├── main.dart
-├── color_schemes.g.dart
+├── theme.g.dart
 ├── screens/
 │   ├── home_screen.dart
 │   └── detail_screen.dart
@@ -824,7 +860,8 @@ class DetailScreen extends StatelessWidget {
 
 ```dart
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart'; // import HomeScreen
+import 'theme.dart';                 // Theme ที่ Export จาก Material Theme Builder
+import 'screens/home_screen.dart';   // หน้า Home ของแอป
 
 // ในคลาส MyApp ให้กำหนด home: const HomeScreen()
 ```
@@ -843,12 +880,16 @@ flutter run
 - [ ] Bottom Navigation สลับ Tab ได้
 - [ ] FAB แสดง SnackBar เมื่อถูกคลิก
 
+**แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
+```image
+บันทึกรูปที่นี่
+``` 
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
 
 #### วัตถุประสงค์
-ฝึกใช้ Google AI Studio สร้าง Flutter Widget และ evaluate ผล
+ฝึกใช้ Google AI Studio สร้าง Flutter Widget
 
 #### ขั้นตอน
 
